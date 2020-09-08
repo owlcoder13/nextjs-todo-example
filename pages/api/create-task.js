@@ -1,13 +1,21 @@
 let Task = require('../../models/Task');
 
-export default (req, res) => {
-    let model = new Task({ text: req.body.text });
-    //
-    // res.status = 200;
-    // res.json({ success: true});
+import getHandler from '../../lib/getHandler';
 
-    res.statusCode = 200
-    res.setHeader('Content-Type', 'application/json')
+let handler = getHandler();
 
-    res.end(JSON.stringify({ success: true, model}))
-}
+handler.post((req, res) => {
+
+    let model = new Task({
+        text: req.body.text,
+        done: false
+    });
+
+    model.save(function (err) {
+        res.statusCode = 200
+        res.setHeader('Content-Type', 'application/json')
+        res.end(JSON.stringify({ success: true, model }))
+    });
+})
+
+export default handler;

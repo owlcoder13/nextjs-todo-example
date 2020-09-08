@@ -6,13 +6,14 @@ db.on('error', console.error.bind(console, 'connection error:'));
 
 
 export default async function database(req, res, next) {
-    let promise = new Promise(r => {
-        db.once('open', function () {
-            r(true);
+    try {
+        let connection = await db.once('open', (event) => {
+            console.log('connected')
         });
-    })
-
-    await promise;
+    } catch (err) {
+        console.log(err);
+    }
 
     return next();
+
 }

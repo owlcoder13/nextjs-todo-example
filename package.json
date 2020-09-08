@@ -8,10 +8,14 @@
     "start": "next start"
   },
   "dependencies": {
+    "array-move": "^3.0.1",
     "mongoose": "^5.10.3",
     "next": "9.5.3",
     "next-connect": "^0.9.0",
+    "qs": "^6.9.4",
     "react": "16.13.1",
-    "react-dom": "16.13.1"
+    "react-dom": "16.13.1",
+    "react-sortable-hoc": "^1.11.0",
+    "react-toastr": "^3.0.0"
   }
 }

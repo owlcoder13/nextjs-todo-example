@@ -9,6 +9,7 @@ try {
     const taskSchema = new mongoose.Schema({
         text: String,
         done: Boolean,
+        order_num: Number,
     });
 
     ModelClass = mongoose.model('Task', taskSchema)
