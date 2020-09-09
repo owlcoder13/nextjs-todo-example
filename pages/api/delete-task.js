@@ -9,10 +9,7 @@ handler.post(async (req, res) => {
         if (err) return console.log(err);
 
         console.log('here result', req.body);
-
-        res.statusCode = 200;
-        res.setHeader('Content-Type', 'application/json');
-        res.end(JSON.stringify({ success: true }));
+        res.status(200).json({ success: true });
     })
 })
 

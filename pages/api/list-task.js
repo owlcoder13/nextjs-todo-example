@@ -8,9 +8,7 @@ handler.use(database)
 
 handler.get(async (req, res) => {
     let model = await Task.find({}).sort('order_num');
-    res.statusCode = 200
-    res.setHeader('Content-Type', 'application/json')
-    res.end(JSON.stringify({ success: true, model }))
+    res.status(200).json({ success: true, model })
 });
 
 export default handler;

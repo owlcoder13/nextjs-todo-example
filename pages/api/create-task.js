@@ -4,18 +4,15 @@ import getHandler from '../../lib/getHandler';
 
 let handler = getHandler();
 
-handler.post((req, res) => {
+handler.post(async (req, res) => {
 
     let model = new Task({
         text: req.body.text,
         done: false
     });
 
-    model.save(function (err) {
-        res.statusCode = 200
-        res.setHeader('Content-Type', 'application/json')
-        res.end(JSON.stringify({ success: true, model }))
-    });
+    await model.save();
+    res.status(200).json({ success: true, model })
 })
 
 export default handler;
